@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*general stuff*/
+:root{
+    --mainFont:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/*styles the timer*/
+#timer{
+    float: right;
+    font-family: var(--mainFont);
+    font-size: 20px;
+    padding-right: 30px;
+}
+
+.showScore{
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: var(--mainFont);
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.showScore:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.startBtn h1{
+    font-family: var(--mainFont);
+    text-align: center;
+}
+
+.startBtn p{
+    font-family: var(--mainFont);
+    text-align: center;
+    font-size: 25px;
+    padding: 15px 40px;
+}
+
+.startBtn button{
+  margin-left: 50%;
+  font-size: 30px;
+  font-family: var(--mainFont);
+  background: blue;
+  color: white; 
+}
+
+.startBtn button:hover{
+    cursor: pointer;
+}
+
+.hide{
+    display:none;
+}
+

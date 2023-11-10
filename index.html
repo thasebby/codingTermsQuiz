@@ -11,17 +11,28 @@
         <!-- This holds the high score and the timer-->
         <header id="header">
             <button class="showScore"> View High Scores</button>
-            <div id="timer"></div>
+            <h1 id="timer"></h1>
+            <div id="timerMain"></div>
         </header>
 
         <br>
         <br>
 
+        <div class ="startBtn">
+            <h1>Coding Quiz Challenge</h1>
+            <p>
+                The goal of this challenge is to answer as many of the code-related
+                questions within the limited time. If you answer any of the questions incorrectly
+                you will be penalized by 10 seconds!
+            </p>
+            <button id ="start" class = "start button">Start</button>
+        </div>
+
         <!--this will hold the main chunk of the code, showing the question and 
         the answer buttons-->
         <div class="container">
-            <div id="question">
-                <div id="question">Different questions</div>
+            <div id="question" class = "hide">
+                <div id="question" >Different questions</div>
                 <div id = "answers">
                     <button class="button">Answer 1</button>
                     <button class="button">Answer 2</button>
