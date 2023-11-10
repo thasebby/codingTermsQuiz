@@ -28,19 +28,19 @@
     transform: scale(1.2);
 }
 
-.startBtn h1{
+#startBtn h1{
     font-family: var(--mainFont);
     text-align: center;
 }
 
-.startBtn p{
+#startBtn p{
     font-family: var(--mainFont);
     text-align: center;
     font-size: 25px;
     padding: 15px 40px;
 }
 
-.startBtn button{
+#startBtn button{
   margin-left: 50%;
   font-size: 30px;
   font-family: var(--mainFont);
@@ -48,11 +48,8 @@
   color: white; 
 }
 
-.startBtn button:hover{
+#startBtn button:hover{
     cursor: pointer;
 }
 
-.hide{
-    display:none;
-}
 
