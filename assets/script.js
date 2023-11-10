@@ -2,8 +2,14 @@
 var timeEl = document.querySelector("#timer");
 //creating variable to place the timer text
 var timerMainEl = document.getElementById("timerMain");
-
+//sets variable for start button
 var startButton = document.querySelector("#start");
+//sets the display properties for the starting prompt and the button
+var startDiv = document.getElementById("startBtn");
+startDiv.style.display = "block";
+//sets the display properties for the questions
+var currentDisplay = document.getElementById("question"); 
+currentDisplay.style.display = "none";
 
 var rightCounter = 0;
 var wrongCounter = 0;
@@ -49,9 +55,15 @@ function setTime(){
     }, 1000);
 }
 
-//this is going to switch to the questions
+//makes the questions appear for the quiz and makes the starting prompt disappear
 function switchFunc(){
-  
+    if(currentDisplay.style.display === "none"){
+        currentDisplay.style.display = "block";
+    }
+
+    if(startDiv.style.display ==="block"){
+        startDiv.style.display = "none"
+    }
 }
 
 //function where timer is appended to All Done! function
@@ -59,4 +71,5 @@ function endMessage() {
     timeEl.textContent = " ";
 }
 
+//event listener that starts once the start button is clicked
 startButton.addEventListener("click", startGame);
