@@ -16,6 +16,94 @@ var wrongCounter = 0;
 var isWin = false;
 var timerInterval;
 var secondsLeft;
+var currentQuestion = 0;
+
+//making an array of different questions and their answers
+const quizQuestions = [
+    {
+        question: "What does HTML stand for?",
+        options: ["Hyper Tag Markup Language", "Hyperlinks Text Mark Language", "Hypertext Markup Language", "Hyper Text Marking Language"],
+        answer: "Hypertext Markup Language"
+    },
+    {
+        question: "What is the command to pull the most recent version of the project you're working on from Github?",
+        options: ["git pull","pull most recent","get main", "git pull origin main"],
+        answer: "git pull origin main"
+    },
+    {
+        question: "What does CSS stand for?" ,
+        options: ["Cascading Style Sheets", "Coding Style Sheet", "Can Successfully Style", "Code So Sick"],
+        answer: "Cascading Style Sheets"
+    },
+    {
+        question: "What is the file that contains all of the preliminary information of a project?",
+        options: ["info.md","README.md","README.js","READ.me"],
+        answer: "README.md"
+    },
+    {
+        question: "What is the programming language that is commonly used to create interactive effects within web browsers?",
+        options: ["HTML","CSS","JavaScript","C++"],
+        answer:"JavaScript"
+    }
+];
+
+//This function adds event listeners to all the buttons
+function addEventListeners(){
+    var buttons = document.querySelectorAll('#answers button');
+
+    buttons.forEach(function(button){
+        button.addEventListener('click', function(){
+            checkAnswer(button);
+        });
+    });
+}
+document.addEventListener("DOMContentLoaded", addEventListeners);
+
+//This function will compare the picked answer to the key
+function checkAnswer(selectedOption){
+    const selectedAnswer=selectedOption.textContent;
+    const correctAnswer=quizQuestions[currentQuestion].answer;
+
+    if(selectedAnswer === correctAnswer){
+        currentQuestion++;
+            if(currentQuestion < quizQuestions.length){
+                displayQuestion();
+            }
+            else{
+                console.log("congrats");
+            }
+    }
+    else{
+        console.log("that's wrong");
+        currentQuestion++;
+            if(currentQuestion < quizQuestions.length){
+                displayQuestion();
+            }
+            else{
+                console.log("congrats");
+            }
+    }
+}
+
+//this function allows the questions to cycle through
+function displayQuestion(){
+    const questionEl = document.getElementById("questions");
+    const answersEl = document.getElementById("answers");
+
+    questionEl.textContent = quizQuestions[currentQuestion].question;
+
+    answersEl.innerHTML = " ";
+    quizQuestions[currentQuestion].options.forEach(option=>{
+        const liEl = document.createElement("button");
+        liEl.textContent = option;
+        liEl.onclick = function(){
+            checkAnswer(this);
+        };
+        answersEl.appendChild(liEl);
+    });
+}
+
+displayQuestion();
 
 function startGame(){
     isWin = false;
