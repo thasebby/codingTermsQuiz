@@ -10,10 +10,14 @@
     <body>
         <!-- This holds the high score and the timer-->
         <header id="header">
-            <button class="showScore"> View High Scores</button>
+            <button id="showScore"> View High Scores</button>
             <h1 id="timer"></h1>
             <div id="timerMain"></div>
         </header>
+
+        <div id = "highScores">
+            <h3 id="storedScores"></h3>
+        </div>
 
         <br>
         <br>
@@ -32,22 +36,26 @@
         the answer buttons-->
         <div class="container">
             <div id="question">
-                <div id="questions" >What does HTML stand for?</div>
+                <div id="questions" ></div>
                 <ul id = "answers">
-                    <li><button class="button">Hyper Tag Markup Language</button></li>
-                    <li><button class="button">Hyperlinks Text Mark Language</button></li>
-                    <li><button class="button">Hypertext Markup Language</button></li>
-                    <li><button class="button">Hyper Text Marking Language</button></li>
-                    <!--This will show if the answer is correct or wrong-->
-                    <div id="answer" class="hidden"></div> 
+                    <li><button class="button"></button></li>
+                    <li><button class="button"></button></li>
+                    <li><button class="button"></button></li>
+                    <li><button class="button"></button></li>
                 </ul>
             </div>
+            <!--This will show if the answer is correct or wrong-->
+            <div id="rightOrWrong" ></div> 
         </div>
 
         <!--This will hold the information that is shown 
         when the game is over-->
-        <div id="gameOver">
-
+        <div id="gameOver" style="display: none;">
+            <h1>All Done!</h1>
+            <h3 id="answeredCorrectly"></h3>
+            <p id="initials">Enter your initials and save your info to the leaderboard!</p>
+            <input type="text" id="initialsInput">
+            <button id="submitInfo" class="button">Sumbit Info</button>
         </div>
 
         <script src="assets/script.js"></script>

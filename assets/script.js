@@ -11,6 +11,21 @@ startDiv.style.display = "block";
 var currentDisplay = document.getElementById("question"); 
 currentDisplay.style.display = "none";
 
+var rightOrWrong = document.getElementById("rightOrWrong");
+
+var endGame = document.getElementById("gameOver");
+
+var ansCorrect = document.getElementById("answeredCorrectly");
+
+var submitInfo = document.querySelector("#submitInfo");
+
+var storedScores = document.getElementById("storedScores");
+
+var showScore = document.querySelector("#showScore");
+
+var highScores = document.getElementById("highScores");
+highScores.style.display = "none";
+
 var rightCounter = 0;
 var wrongCounter = 0;
 var isWin = false;
@@ -57,7 +72,6 @@ function addEventListeners(){
         });
     });
 }
-document.addEventListener("DOMContentLoaded", addEventListeners);
 
 //This function will compare the picked answer to the key
 function checkAnswer(selectedOption){
@@ -65,23 +79,23 @@ function checkAnswer(selectedOption){
     const correctAnswer=quizQuestions[currentQuestion].answer;
 
     if(selectedAnswer === correctAnswer){
-        currentQuestion++;
-            if(currentQuestion < quizQuestions.length){
-                displayQuestion();
-            }
-            else{
-                console.log("congrats");
-            }
+        rightCounter++;
+        rightOrWrong.textContent = "That's Right!";
+    }
+    //else deducts ten seconds from timer if answered wrong
+    else{
+        wrongCounter++;
+        rightOrWrong.textContent = "That's Wrong!";
+        secondsLeft -= 10;
+    }
+
+    currentQuestion++;
+    
+    if(currentQuestion < quizQuestions.length){
+        displayQuestion();
     }
     else{
-        console.log("that's wrong");
-        currentQuestion++;
-            if(currentQuestion < quizQuestions.length){
-                displayQuestion();
-            }
-            else{
-                console.log("congrats");
-            }
+        endMessage();
     }
 }
 
@@ -111,6 +125,7 @@ function startGame(){
     //starts the timer
     setTime();
     switchFunc();
+    displayQuestion();
 
 }
 
@@ -127,7 +142,7 @@ function setTime(){
             if(isWin && secondsLeft > 0){
 
             clearInterval(timerInterval);
-            winGame();
+            endMessage();
             
             }
         }
@@ -156,8 +171,34 @@ function switchFunc(){
 
 //function where timer is appended to All Done! function
 function endMessage() {
-    timeEl.textContent = " ";
+    clearInterval(timerInterval);
+    var results = endGame;
+
+    results.style.display = "block";
+    currentDisplay.style.display = "none";
+    rightOrWrong.style.display = "none";
+
+    ansCorrect.textContent = "You got " + rightCounter + " correct!";
+
+    const initials = document.getElementById("initialsInput").value;
+
+    localStorage.setItem("Users Initials", initials);
+    localStorage.setItem("Score", rightCounter);
+
+
 }
+showScore.addEventListener("click",function(){
+    results.style.display = "none";
+    storedScores.style.display = "block";
+    
+    localStorage.getItem("initials");
+    localStorage.getItem("rightCounter");
+    storedScores.textContent = "User: " + initials + " Score: " + rightCounter;
+
+})
+
+
 
 //event listener that starts once the start button is clicked
 startButton.addEventListener("click", startGame);
+submitInfo.addEventListener("click",endMessage);
