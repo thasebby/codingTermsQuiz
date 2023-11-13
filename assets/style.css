@@ -5,6 +5,7 @@
 /*general stuff*/
 :root{
     --mainFont:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --buttonColor:#BA00FF;
 }
 /*styles the timer*/
 #timer{
@@ -50,6 +51,39 @@
 
 #startBtn button:hover{
     cursor: pointer;
+}
+
+.container{
+    text-align:center;
+}
+
+.question{
+    font-weight: bold;
+    font-family: var(--mainFont);
+    font-size: 40px;
+}
+
+#answers {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+#answers button{
+    width: 200px;
+    margin: 10px;
+    background-color:var(--buttonColor);
+    border-radius: 8px;
+    font-size: 25px;
+}
+
+li{
+    list-style: none;
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 
