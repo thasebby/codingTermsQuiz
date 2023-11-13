@@ -24,7 +24,7 @@ var storedScores = document.getElementById("storedScores");
 var showScore = document.querySelector("#showScore");
 
 var highScores = document.getElementById("highScores");
-highScores.style.display = "none";
+
 
 var rightCounter = 0;
 var wrongCounter = 0;
@@ -172,9 +172,8 @@ function switchFunc(){
 //function where timer is appended to All Done! function
 function endMessage() {
     clearInterval(timerInterval);
-    var results = endGame;
 
-    results.style.display = "block";
+    endGame.style.display = "block";
     currentDisplay.style.display = "none";
     rightOrWrong.style.display = "none";
 
@@ -182,23 +181,25 @@ function endMessage() {
 
     const initials = document.getElementById("initialsInput").value;
 
-    localStorage.setItem("Users Initials", initials);
+    localStorage.setItem("Users Initials", JSON.stringify(initials));
     localStorage.setItem("Score", rightCounter);
 
 
 }
-showScore.addEventListener("click",function(){
-    results.style.display = "none";
+
+    showScore.addEventListener("click",function(){
+    endGame.style.display = "none";
     storedScores.style.display = "block";
     
-    localStorage.getItem("initials");
+    var initialsPost=JSON.parse(localStorage.getItem("initials"));
     localStorage.getItem("rightCounter");
-    storedScores.textContent = "User: " + initials + " Score: " + rightCounter;
+    storedScores.textContent = "User: " + initialsPost + " Score: " + rightCounter;
 
-})
+});
 
 
 
 //event listener that starts once the start button is clicked
 startButton.addEventListener("click", startGame);
 submitInfo.addEventListener("click",endMessage);
+ 
