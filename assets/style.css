@@ -107,3 +107,19 @@ button:hover{
     font-family: var(--mainFont);
 }
 
+#highScores{
+    text-align: center;    
+}
+
+#HStitle{
+    font-family: var(--mainFont);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#storedScores{
+    font-family: var(--mainFont);
+    font-size: 25px;
+    background-color: gray;
+}
+

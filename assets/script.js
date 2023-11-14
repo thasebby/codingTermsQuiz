@@ -181,18 +181,20 @@ function endMessage() {
 
     const initials = document.getElementById("initialsInput").value;
 
-    localStorage.setItem("Users Initials", JSON.stringify(initials));
-    localStorage.setItem("Score", rightCounter);
+    window.localStorage.setItem("Users Initials", JSON.stringify(initials));
+    window.localStorage.setItem("Score", rightCounter);
 
 
 }
 
     showScore.addEventListener("click",function(){
+    document.getElementById("HStitle").innerHTML = "High Scores";
+    
     endGame.style.display = "none";
     storedScores.style.display = "block";
     
-    var initialsPost=JSON.parse(localStorage.getItem("initials"));
-    localStorage.getItem("rightCounter");
+    var initialsPost=JSON.parse(window.localStorage.getItem("Users Initials"));
+    window.localStorage.getItem("rightCounter");
     storedScores.textContent = "User: " + initialsPost + " Score: " + rightCounter;
 
 });
@@ -202,4 +204,4 @@ function endMessage() {
 //event listener that starts once the start button is clicked
 startButton.addEventListener("click", startGame);
 submitInfo.addEventListener("click",endMessage);
- 
+  
